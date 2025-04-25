@@ -2,6 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
+// Import routes
+const authRoutes = require('./routes/authRoutes');
+const bookRoutes = require('./routes/bookRoutes');
+const borrowingRoutes = require('./routes/borrowingRoutes');
+
 // Load environment variables
 dotenv.config();
 
@@ -12,9 +17,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Simple route for testing
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/books', bookRoutes);
+app.use('/api/borrowings', borrowingRoutes);
+
+// Home route
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Library Management System API' });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
 });
 
 // Set port and start server
