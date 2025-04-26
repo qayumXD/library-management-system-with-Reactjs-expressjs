@@ -140,4 +140,4 @@ This project is licensed under the ISC License.
 ---
 
 ## Author
-Developed by [Your Name](https://github.com/qayumXD).
+Developed by [Abdul Qayyoum](https://github.com/qayumXD).
